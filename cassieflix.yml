@@ -1,0 +1,5 @@
+# Cassandra settings.
+cassandra:
+  #A list of cassandra seeds:
+  clusterName: Cassieflix
+  seeds: ["127.0.0.1"]
