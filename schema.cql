@@ -1,6 +1,8 @@
 CREATE KEYSPACE cassieflix
 WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
 
+USE cassieflix;
+
 CREATE TABLE "movies" ( 
 	"id" text,
 	"title" text,
