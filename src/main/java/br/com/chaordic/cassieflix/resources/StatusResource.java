@@ -7,7 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.chaordic.cassieflix.core.cassandra.CassandraClient;
+import br.com.chaordic.cassieflix.db.client.CassandraClient;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.collect.Maps;

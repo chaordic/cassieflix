@@ -1,7 +1,7 @@
 package br.com.chaordic.cassieflix;
 
 import io.dropwizard.Configuration;
-import br.com.chaordic.cassieflix.core.cassandra.CassandraInitializer;
+import br.com.chaordic.cassieflix.db.CassandraInitializer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.internal.NotNull;

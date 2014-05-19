@@ -1,4 +1,4 @@
-package br.com.chaordic.cassieflix.core.cassandra;
+package br.com.chaordic.cassieflix.db;
 
 import java.util.List;
 

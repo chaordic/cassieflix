@@ -2,7 +2,7 @@ package br.com.chaordic.cassieflix.health;
 
 import java.util.Set;
 
-import br.com.chaordic.cassieflix.core.cassandra.CassandraClient;
+import br.com.chaordic.cassieflix.db.client.CassandraClient;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.datastax.driver.core.Host;
