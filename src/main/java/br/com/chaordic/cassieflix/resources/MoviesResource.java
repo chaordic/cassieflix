@@ -42,4 +42,10 @@ public class MoviesResource {
         }
         return Response.status(Response.Status.NOT_FOUND).entity(MOVIE_NOT_FOUND).build();
     }
+
+    @GET
+    @Timed
+    public Response getAll() {
+        return Response.ok(movieDao.getAll()).build();
+    }
 }
