@@ -12,6 +12,8 @@ public interface MovieDao {
 
     Optional<Movie> get(String movieId);
 
-    Iterator<Movie> getAll();
+    Iterator<Movie> getAll(Optional<Integer> limit);
+
+    PagedMovies getAllPaged(Long startToken, Integer limit);
 
 }

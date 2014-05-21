@@ -7,11 +7,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public abstract class AbstractCassandraDao {
 
-	protected Session session;
-	ObjectMapper mapper;
+    protected Session session;
+    ObjectMapper mapper;
 
-	public AbstractCassandraDao(CassandraClient client) {
-		this.session = client.getSession();
-		mapper = new ObjectMapper();
-	}
+    public AbstractCassandraDao(CassandraClient client) {
+        this.session = client.getSession();
+        mapper = new ObjectMapper();
+    }
 }
