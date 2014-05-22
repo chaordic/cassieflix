@@ -47,12 +47,19 @@ public class MoviesResource {
     @GET
     @Timed
     public Response getAll(@QueryParam("limit") Optional<Integer> limit,
-                            @QueryParam("startToken") Optional<Long> startToken) {
+                            @QueryParam("startToken") Optional<Long> startToken,
+                            @QueryParam("startString") Optional<String> startString,
+                            @QueryParam("endString") Optional<String> endString,
+                            @QueryParam("unordered") Optional<Boolean> unordered) {
         if (startToken.isPresent()) {
             Integer numResults = limit.or(100);
             return Response.ok(movieDao.getAllPaged(startToken.get(), numResults)).build();
         }
 
-        return Response.ok(movieDao.getAll(limit)).build();
+        if (unordered.or(false)){
+            return Response.ok(movieDao.getAll(limit)).build();
+        }
+
+        return Response.ok(movieDao.getAllByName(startString, endString, limit)).build();
     }
 }
