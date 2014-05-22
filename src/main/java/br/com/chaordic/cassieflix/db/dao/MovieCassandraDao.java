@@ -136,7 +136,6 @@ public class MovieCassandraDao extends AbstractCassandraDao implements MovieDao 
                 .and(lt("title", endString.or(String.valueOf(Character.MAX_VALUE)).toLowerCase()));
         System.out.println(select);
         ResultSet result = session.execute(select);
-        ResultSetFuture executeAsync = session.executeAsync(select);
         Iterator<Movie> moviesIterator = moviesIterator(result);
         return moviesIterator;
     }
