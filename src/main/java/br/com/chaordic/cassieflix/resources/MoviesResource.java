@@ -9,8 +9,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.com.chaordic.cassieflix.core.dao.MovieDao;
 import br.com.chaordic.cassieflix.core.pojo.Movie;
+import br.com.chaordic.cassieflix.db.dao.MovieDao;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.base.Optional;
@@ -29,7 +29,7 @@ public class MoviesResource {
     @POST
     @Timed
     public Response insertMovie(Movie movie) {
-        movieDao.insert(movie);
+        movieDao.update(movie);
         return Response.ok(movie).build();
     }
 

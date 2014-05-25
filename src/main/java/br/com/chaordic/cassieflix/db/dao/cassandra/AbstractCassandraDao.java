@@ -1,4 +1,4 @@
-package br.com.chaordic.cassieflix.db.dao;
+package br.com.chaordic.cassieflix.db.dao.cassandra;
 
 import br.com.chaordic.cassieflix.db.client.CassandraClient;
 

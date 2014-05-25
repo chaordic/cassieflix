@@ -1,23 +1,26 @@
-package br.com.chaordic.cassieflix.db.dao;
+package br.com.chaordic.cassieflix.db.dao.cassandra;
 
 import static br.com.chaordic.cassieflix.core.util.MarshallUtils.marshall;
 import static br.com.chaordic.cassieflix.core.util.MarshallUtils.unmarshall;
 import static br.com.chaordic.cassieflix.db.Tables.moviesbyid;
 import static br.com.chaordic.cassieflix.db.Tables.moviesbyname;
-import static com.datastax.driver.core.querybuilder.QueryBuilder.*;
+import static com.datastax.driver.core.querybuilder.QueryBuilder.eq;
+import static com.datastax.driver.core.querybuilder.QueryBuilder.gt;
+import static com.datastax.driver.core.querybuilder.QueryBuilder.gte;
+import static com.datastax.driver.core.querybuilder.QueryBuilder.lt;
+import static com.datastax.driver.core.querybuilder.QueryBuilder.token;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import br.com.chaordic.cassieflix.core.dao.MovieDao;
-import br.com.chaordic.cassieflix.core.dao.PagedMovies;
 import br.com.chaordic.cassieflix.core.pojo.Movie;
+import br.com.chaordic.cassieflix.core.pojo.PagedMovies;
 import br.com.chaordic.cassieflix.db.client.CassandraClient;
+import br.com.chaordic.cassieflix.db.dao.MovieDao;
 
 import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.ResultSetFuture;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.Insert;
@@ -39,7 +42,7 @@ public class MovieCassandraDao extends AbstractCassandraDao implements MovieDao 
     }
 
     @Override
-    public Movie insert(Movie movie) {
+    public Movie update(Movie movie) {
         Map<String, Object> movieObj = marshall(movie);
 
         Insert moviesbyIdInsert = QueryBuilder.insertInto(MOVIES_BY_ID);

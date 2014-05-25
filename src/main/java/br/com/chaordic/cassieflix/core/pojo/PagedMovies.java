@@ -1,8 +1,6 @@
-package br.com.chaordic.cassieflix.core.dao;
+package br.com.chaordic.cassieflix.core.pojo;
 
 import java.util.List;
-
-import br.com.chaordic.cassieflix.core.pojo.Movie;
 
 public class PagedMovies {
 	
