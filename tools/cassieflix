@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+if [[ $# -lt 2 ]]; then
+  echo "Usage: $0 <METHOD> <resource> [json]"
+  exit 1
+fi
+
+METHOD=$1
+RESOURCE=$2
+DATA=$3
+
+if [[ "$METHOD" == "GET" || "$METHOD" == "get" ]]; then
+  curl -X $METHOD http://localhost:8080/$RESOURCE --header "Content-Type:application/json" 2>/dev/null | python -m"json.tool"
+else
+  curl -X $METHOD -d"$DATA" http://localhost:8080/$RESOURCE --header "Content-Type:application/json" 2>/dev/null | python -m"json.tool"
+fi
+
+echo
