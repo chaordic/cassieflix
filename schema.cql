@@ -41,3 +41,11 @@ CREATE TABLE moviesbyname (
         poster text,
         PRIMARY KEY (prefix, title, id)
 ) WITH CLUSTERING ORDER BY (title ASC);
+
+CREATE TABLE usersbyid ( 
+	login text,
+	name text,
+	email text, 
+	creationdate timestamp,
+	PRIMARY KEY (login) 
+);
