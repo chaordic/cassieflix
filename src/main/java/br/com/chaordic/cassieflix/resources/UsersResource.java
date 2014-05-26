@@ -8,7 +8,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -18,7 +17,6 @@ import br.com.chaordic.cassieflix.core.pojo.User;
 import br.com.chaordic.cassieflix.db.dao.UserDao;
 
 import com.codahale.metrics.annotation.Timed;
-import com.google.common.base.Optional;
 
 @Path("/users")
 @Produces(MediaType.APPLICATION_JSON)
@@ -42,7 +40,7 @@ public class UsersResource {
         }
         
         if (userDao.updateUser(user, true)) {
-            return Response.status(Status.OK).entity(user).build();            
+            return Response.ok(user).build();            
         }
 
         return Response.status(Status.FORBIDDEN).entity(USER_EXISTS).build();  
@@ -64,7 +62,7 @@ public class UsersResource {
         
         userDao.updateUser(user, false);
 
-        return Response.status(Status.OK).entity(user).build();
+        return Response.ok(user).build();
     }    
     
     @GET
@@ -74,7 +72,7 @@ public class UsersResource {
         User user = userDao.getUser(login);
         
         if (user != null) {
-            return Response.status(Status.OK).entity(user).build();            
+            return Response.ok(user).build();            
         }
         
         return Response.status(Response.Status.NOT_FOUND).entity(USER_NOT_FOUND).build();

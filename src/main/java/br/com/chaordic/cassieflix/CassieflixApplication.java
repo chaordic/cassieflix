@@ -6,10 +6,13 @@ import io.dropwizard.setup.Environment;
 import br.com.chaordic.cassieflix.db.client.CassandraClient;
 import br.com.chaordic.cassieflix.db.client.SyncCassandraClient;
 import br.com.chaordic.cassieflix.db.dao.MovieDao;
+import br.com.chaordic.cassieflix.db.dao.MovieListDao;
 import br.com.chaordic.cassieflix.db.dao.UserDao;
 import br.com.chaordic.cassieflix.db.dao.cassandra.MovieCassandraDao;
+import br.com.chaordic.cassieflix.db.dao.cassandra.MovieListCassandraDao;
 import br.com.chaordic.cassieflix.db.dao.cassandra.UserCassandraDao;
 import br.com.chaordic.cassieflix.health.CassandraHealthCheck;
+import br.com.chaordic.cassieflix.resources.MovieListResource;
 import br.com.chaordic.cassieflix.resources.MoviesResource;
 import br.com.chaordic.cassieflix.resources.StatusResource;
 import br.com.chaordic.cassieflix.resources.UsersResource;
@@ -35,6 +38,7 @@ public class CassieflixApplication extends Application<CassieflixConfiguration> 
 
         /* DAOs */
         MovieDao movieDao = new MovieCassandraDao(cassieClient);
+        MovieListDao movieListDao = new MovieListCassandraDao(cassieClient);        
         UserDao userDao = new UserCassandraDao(cassieClient);
 
         /* Health Checks */
@@ -42,6 +46,7 @@ public class CassieflixApplication extends Application<CassieflixConfiguration> 
 
         /* Resources */
         env.jersey().register(new MoviesResource(movieDao));
+        env.jersey().register(new MovieListResource(movieDao, movieListDao));        
         env.jersey().register(new UsersResource(userDao));		
         env.jersey().register(new StatusResource(cassieClient));
     }
