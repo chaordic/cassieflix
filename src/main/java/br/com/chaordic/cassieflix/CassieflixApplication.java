@@ -47,7 +47,7 @@ public class CassieflixApplication extends Application<CassieflixConfiguration> 
         /* Resources */
         env.jersey().register(new MoviesResource(movieDao));
         env.jersey().register(new MovieListResource(movieDao, movieListDao));        
-        env.jersey().register(new UsersResource(userDao));		
+        env.jersey().register(new UsersResource(userDao, movieListDao));		
         env.jersey().register(new StatusResource(cassieClient));
     }
 

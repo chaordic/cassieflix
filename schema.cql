@@ -49,3 +49,24 @@ CREATE TABLE usersbyid (
 	creationdate timestamp,
 	PRIMARY KEY (login) 
 );
+
+CREATE TABLE movielistbyid (
+        listid uuid, /* list columns */
+        listtitle text static,
+        listowner text static,
+        listcreated timestamp static,
+        movieposition int, /* movie columns */
+        movieid text,
+        movietitle text,
+        movieyear int,
+        movieposter text,
+        PRIMARY KEY (listid, movieposition)
+) WITH CLUSTERING ORDER BY (movieposition ASC);
+
+CREATE TABLE movielistsummarybyuser ( 
+	userlogin TEXT,
+	listcreation timestamp,
+	listid uuid,
+	listtitle text,
+	PRIMARY KEY (userlogin, listcreation, listid) 
+) with CLUSTERING ORDER BY (listcreation DESC);

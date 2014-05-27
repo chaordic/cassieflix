@@ -4,7 +4,6 @@ import java.util.Date;
 
 import br.com.chaordic.cassieflix.core.jackson.SimpleDateDeserializer;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class Movie {
@@ -115,10 +114,5 @@ public class Movie {
     }
     public void setPoster(String poster) {
         this.poster = poster;
-    }
-    
-    @JsonIgnore
-    public MovieSummary getSummary() {
-        return new MovieSummary(id, title, year, poster);
     }
 }

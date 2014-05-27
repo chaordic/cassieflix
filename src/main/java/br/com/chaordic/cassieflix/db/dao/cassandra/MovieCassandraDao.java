@@ -66,6 +66,8 @@ public class MovieCassandraDao extends AbstractCassandraDao implements MovieDao 
 
     @Override
     public Optional<Movie> get(String movieId) {
+        if (movieId == null) return Optional.absent();
+
         Where selectWhere = QueryBuilder.select().all().from(MOVIES_BY_ID).where(eq("id", movieId));
         ResultSet result = session.execute(selectWhere);
 
