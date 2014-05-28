@@ -16,3 +16,9 @@ SELECT * FROM movielistbyid WHERE listid = 80637850-e461-11e3-8153-1594ac5113aa;
 ./cassieflix POST similarMovies '{"movieId": "tt0045161", "similarMovieId": "tt1189073", "similarity": 0.8}'
 ./cassieflix POST similarMovies '{"movieId": "tt0045161", "similarMovieId": "tt0049730", "similarity": 0.2}'
 ./cassieflix POST similarMovies '{"movieId": "tt0045161", "similarMovieId": "tt0443632", "similarity": 0.9}'
+
+
+
+./tools/cassieflix post userActivity '{"login": "paulo", "type": "like", "movieId": "tt1018785"}'
+./tools/cassieflix post userActivity '{"login": "paulo", "type": "like", "movieId": "tt0100594"}'
+./tools/cassieflix get userActivity/paulo/like
