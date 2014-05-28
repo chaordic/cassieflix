@@ -22,6 +22,39 @@ CREATE TABLE moviesbyid (
         PRIMARY KEY (id)
 );
 
+CREATE TABLE usersbyid ( 
+	login text,
+	name text,
+	email text, 
+	creationdate timestamp,
+	PRIMARY KEY (login) 
+);
+
+CREATE TABLE similarmovies ( 
+	movieid text,
+	similarity float,
+	similarmovieid text,
+	PRIMARY KEY (movieid, similarity, similarmovieid)
+) WITH CLUSTERING ORDER BY (similarity DESC);
+
+CREATE TABLE useractivitybyuser ( 
+	userid text, 
+	activitytype text,
+	activityid timeuuid,
+	activityuserid text,
+	activitymovieid text,
+	PRIMARY KEY ((userid, activitytype), activityid) 
+) WITH CLUSTERING ORDER BY (activityid ASC);
+
+CREATE TABLE useractivitybytime ( 
+	timeprefix text, 
+	activitytype text,
+	activityid timeuuid,
+	activityuserid text,
+	activitymovieid text,
+	PRIMARY KEY ((timeprefix, activitytype), activityid) 
+) WITH CLUSTERING ORDER BY (activityid ASC);
+
 CREATE TABLE moviesbyname (
         prefix text,
         id text,
@@ -42,13 +75,6 @@ CREATE TABLE moviesbyname (
         PRIMARY KEY (prefix, title, id)
 ) WITH CLUSTERING ORDER BY (title ASC);
 
-CREATE TABLE usersbyid ( 
-	login text,
-	name text,
-	email text, 
-	creationdate timestamp,
-	PRIMARY KEY (login) 
-);
 
 CREATE TABLE movielistbyid (
         listid uuid, /* list columns */
@@ -70,3 +96,4 @@ CREATE TABLE movielistsummarybyuser (
 	listtitle text,
 	PRIMARY KEY (userlogin, listcreation, listid) 
 ) with CLUSTERING ORDER BY (listcreation DESC);
+
