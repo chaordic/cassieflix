@@ -1,0 +1,18 @@
+BEGIN BATCH 
+	INSERT INTO movielistbyid (listid, listtitle, movieposition, movieid, movietitle, movieyear)
+	VALUES (80637850-e461-11e3-8153-1594ac5113aa, 'My movies', 0, 'tt2059255', 'No', 2013);
+	INSERT INTO movielistbyid (listid, listtitle, movieposition, movieid, movietitle, movieyear)
+	VALUES (80637850-e461-11e3-8153-1594ac5113aa, 'My movies', 1, 'tt0780571', 'Mr. Brooks', 2007);
+	INSERT INTO movielistbyid (listid, listtitle, movieposition, movieid, movietitle, movieyear)
+	VALUES (80637850-e461-11e3-8153-1594ac5113aa, 'My movies', 2, 'tt0071853', 'Monty Python and the Holy Grail', 1975);		
+APPLY BATCH;
+
+SELECT * FROM movielistbyid WHERE listid = 80637850-e461-11e3-8153-1594ac5113aa;
+
+
+./cassieflix GET similarMovies/tt0045161
+
+./cassieflix POST similarMovies '{"movieId": "tt0045161", "similarMovieId": "tt0133952", "similarity": 0.1}'
+./cassieflix POST similarMovies '{"movieId": "tt0045161", "similarMovieId": "tt1189073", "similarity": 0.8}'
+./cassieflix POST similarMovies '{"movieId": "tt0045161", "similarMovieId": "tt0049730", "similarity": 0.2}'
+./cassieflix POST similarMovies '{"movieId": "tt0045161", "similarMovieId": "tt0443632", "similarity": 0.9}'
