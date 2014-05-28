@@ -4,5 +4,6 @@ public enum Tables {
     moviesbyid, moviesbyname,
     usersbyid,
     movielistbyid, movielistsummarybyuser,
-    similarmovies
+    similarmovies,
+    useractivitybyuser
 }

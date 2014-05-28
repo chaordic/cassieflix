@@ -41,10 +41,9 @@ CREATE TABLE useractivitybyuser (
 	userid text, 
 	activitytype text,
 	activityid timeuuid,
-	activityuserid text,
 	activitymovieid text,
 	PRIMARY KEY ((userid, activitytype), activityid) 
-) WITH CLUSTERING ORDER BY (activityid ASC);
+) WITH CLUSTERING ORDER BY (activityid DESC);
 
 CREATE TABLE useractivitybytime ( 
 	timeprefix text, 
@@ -53,7 +52,7 @@ CREATE TABLE useractivitybytime (
 	activityuserid text,
 	activitymovieid text,
 	PRIMARY KEY ((timeprefix, activitytype), activityid) 
-) WITH CLUSTERING ORDER BY (activityid ASC);
+) WITH CLUSTERING ORDER BY (activityid DESC);
 
 CREATE TABLE moviesbyname (
         prefix text,
