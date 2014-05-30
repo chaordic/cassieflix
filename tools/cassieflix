@@ -13,7 +13,7 @@ DATA=$3
 if [[ "$METHOD" == "GET" || "$METHOD" == "get" ]]; then
   curl -X $METHOD http://localhost:8080/$RESOURCE --header "Content-Type:application/json" 2>/dev/null | python -m"json.tool"
 else
-  curl -X $METHOD -d"$DATA" http://localhost:8080/$RESOURCE --header "Content-Type:application/json" 2>/dev/null | python -m"json.tool"
+  curl -X $METHOD -d"@$DATA" http://localhost:8080/$RESOURCE --header "Content-Type:application/json" 2>/dev/null | python -m"json.tool"
 fi
 
 echo
